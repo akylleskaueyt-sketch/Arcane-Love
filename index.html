@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Achilles & Gracinda</title>
+
+<style>
+
+/* FONTE */
+
+@font-face{
+font-family:"Lidakz";
+src:url("Lidakz.otf") format("opentype");
+}
+
+/* BODY */
+
+body{
+margin:0;
+background:#0b0b14;
+font-family:Arial;
+color:white;
+overflow:hidden;
+user-select:none;
+}
+
+/* FUNDOS */
+
+.zaun{
+position:fixed;
+left:0;
+top:0;
+width:50%;
+height:100%;
+background:url("https://media.tenor.com/9Sprv48rbTwAAAAd/zaun-arcane.gif");
+background-size:cover;
+opacity:0.35;
+pointer-events:none;
+z-index:0;
+}
+
+.piltover{
+position:fixed;
+right:0;
+top:0;
+width:50%;
+height:100%;
+background:url("https://media.tenor.com/jKk4o9S7Q8kAAAAd/piltover-arcane.gif");
+background-size:cover;
+opacity:0.35;
+pointer-events:none;
+z-index:0;
+}
+
+/* CONTAINER */
+
+.container{
+position:relative;
+z-index:10;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+/* TITULO */
+
+h1{
+color:#6df6ff;
+font-size:40px;
+}
+
+/* TEXTO */
+
+.text{
+max-width:600px;
+font-size:19px;
+line-height:1.6;
+margin:20px;
+}
+
+/* BOTÕES */
+
+button{
+
+background:#111827;
+border:2px solid #6df6ff;
+color:#6df6ff;
+padding:12px 20px;
+margin:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+button:hover{
+background:#6df6ff;
+color:#000;
+}
+
+/* GIFS */
+
+.jinx{
+position:fixed;
+right:40px;
+bottom:20px;
+width:220px;
+pointer-events:none;
+z-index:1;
+}
+
+.ekko{
+position:fixed;
+left:40px;
+bottom:20px;
+width:220px;
+pointer-events:none;
+z-index:1;
+}
+
+/* GLITCH */
+
+.glitch{
+animation:glitch 0.4s;
+}
+
+@keyframes glitch{
+
+0%{transform:translate(0)}
+25%{transform:translate(-6px,3px)}
+50%{transform:translate(6px,-3px)}
+75%{transform:translate(-3px,4px)}
+100%{transform:translate(0)}
+
+}
+
+/* GRAFITE EKKO */
+
+.ekkoGraffiti{
+
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) rotate(-6deg);
+
+font-size:48px;
+
+font-family:"Lidakz";
+
+color:#00ffe1;
+
+opacity:0;
+
+z-index:999;
+
+pointer-events:none;
+
+}
+
+.showGraffiti{
+opacity:1;
+}
+
+/* VIDEO */
+
+.videoContainer{
+
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+width:80%;
+max-width:800px;
+
+display:none;
+
+z-index:1000;
+
+text-align:center;
+
+background:black;
+padding:20px;
+
+}
+
+.videoContainer iframe{
+
+width:100%;
+height:450px;
+
+}
+
+.timelineText{
+
+font-family:"Lidakz";
+font-size:40px;
+
+margin-bottom:20px;
+
+color:#6df6ff;
+
+}
+
+.closeBtn{
+
+margin-top:15px;
+
+background:#6df6ff;
+border:none;
+
+padding:10px 20px;
+
+color:black;
+
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="zaun"></div>
+<div class="piltover"></div>
+
+<img class="jinx" src="https://media.tenor.com/jb14Mqgp9jkAAAAd/jinx-laugh.gif">
+<img class="ekko" src="https://media.tenor.com/wZ38fxcRj5gAAAAC/ekko.gif">
+
+<div class="container">
+
+<h1>Achilles & Gracinda</h1>
+
+<div class="text" id="text">
+
+Às vezes parece que estamos em lados diferentes do mundo...
+como Piltover e Zaun.
+
+Mas mesmo quando o tempo quebra...
+
+eu ainda voltaria.
+
+Sempre.
+
+</div>
+
+<button onclick="next()">Continuar</button>
+
+<button onclick="rewind()">⏪ Rewind</button>
+
+<button onclick="jinxMusic()">💣 Get Jinxed</button>
+
+<button onclick="ekkoTalk()">🕒 Fala do Ekko</button>
+
+<button onclick="showVideo()">🎬 Ver nossa cena</button>
+
+</div>
+
+<div class="ekkoGraffiti" id="ekkoGraffiti">
+
+Mesmo se o tempo quebrar mil vezes...
+algumas pessoas ainda valem a pena.
+
+</div>
+
+<div class="videoContainer" id="videoContainer">
+
+<div class="timelineText">
+em outra timeline...
+</div>
+
+<iframe
+src=""
+id="ytvideo"
+frameborder="0"
+allow="autoplay"
+allowfullscreen>
+</iframe>
+
+<button class="closeBtn" onclick="closeVideo()">Fechar vídeo</button>
+
+</div>
+
+<audio id="rewindSound">
+<source src="rewind.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="maMusic">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="jinxSong">
+<source src="getjinxed.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let messages=[
+
+"Você é o meu caos favorito.",
+
+"Mesmo quando brigamos... eu ainda escolheria você.",
+
+"Ekko passou anos tentando consertar o tempo.",
+
+"Mas antes disso... existia apenas Ekko e Powder.",
+
+"Duas crianças em Zaun tentando sobreviver.",
+
+"Eu gosto de pensar que em algum universo...",
+
+"Ekko nunca precisou voltar no tempo.",
+
+"E Powder nunca virou Jinx.",
+
+"Eles só cresceram juntos.",
+
+"Talvez seja assim em outro mundo.",
+
+"Mas nesse mundo... eu ainda escolheria você.",
+
+"Mesmo quando parece que estamos quebrados.",
+
+"Porque algumas pessoas sempre valem a pena."
+
+]
+
+let index=0
+
+function next(){
+
+index++
+
+if(index>=messages.length)
+index=messages.length-1
+
+document.getElementById("text").innerText=messages[index]
+
+}
+
+function rewind(){
+
+document.getElementById("rewindSound").play()
+
+let music=document.getElementById("maMusic")
+
+music.currentTime=0
+music.play()
+
+document.body.classList.add("glitch")
+
+setTimeout(()=>{
+
+document.body.classList.remove("glitch")
+
+index=0
+
+document.getElementById("text").innerText=messages[0]
+
+},600)
+
+}
+
+function jinxMusic(){
+
+let j=document.getElementById("jinxSong")
+
+j.currentTime=0
+j.play()
+
+}
+
+function ekkoTalk(){
+
+let g=document.getElementById("ekkoGraffiti")
+
+g.classList.add("showGraffiti")
+
+setTimeout(()=>{
+
+g.classList.remove("showGraffiti")
+
+},4000)
+
+}
+
+function showVideo(){
+
+let v=document.getElementById("videoContainer")
+
+let yt=document.getElementById("ytvideo")
+
+v.style.display="block"
+
+yt.src="https://www.youtube.com/embed/sZ44Wj60eSQ?autoplay=1"
+
+}
+
+function closeVideo(){
+
+let v=document.getElementById("videoContainer")
+
+let yt=document.getElementById("ytvideo")
+
+v.style.display="none"
+
+yt.src=""
+
+}
+
+</script>
+
+</body>
+</html>

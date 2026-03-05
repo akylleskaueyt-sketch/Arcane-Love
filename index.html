@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Achilles & Gracinda</title>
+
+<style>
+
+body{
+margin:0;
+background:#0b0b14;
+font-family:Arial;
+color:white;
+overflow:hidden;
+}
+
+/* fundos */
+
+.zaun{
+position:fixed;
+left:0;
+top:0;
+width:50%;
+height:100%;
+background:url("https://c.tenor.com/9Sprv48rbTwAAAAd/tenor.gif");
+background-size:cover;
+opacity:0.35;
+}
+
+.piltover{
+position:fixed;
+right:0;
+top:0;
+width:50%;
+height:100%;
+background:url("https://64.media.tumblr.com/fe81b5bc9703e974317a1d4fb29622cc/903e4a39edea2ad8-1d/s540x810/01d32821e54edf94324ecbfe8499b267ce97c187.gifv");
+background-size:cover;
+opacity:0.35;
+}
+
+/* interface */
+
+.container{
+position:relative;
+z-index:2;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+h1{
+color:#6df6ff;
+font-size:38px;
+}
+
+.text{
+max-width:500px;
+font-size:18px;
+line-height:1.6;
+margin:20px;
+}
+
+button{
+background:#111827;
+border:2px solid #6df6ff;
+color:#6df6ff;
+padding:12px 20px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#6df6ff;
+color:#000;
+}
+
+/* gifs */
+
+.jinx{
+position:fixed;
+right:20px;
+bottom:20px;
+width:160px;
+}
+
+.ekko{
+position:fixed;
+left:20px;
+bottom:20px;
+width:160px;
+}
+
+/* engrenagem */
+
+.gear{
+position:fixed;
+top:20px;
+right:20px;
+width:90px;
+opacity:0.4;
+animation:spin 10s linear infinite;
+}
+
+@keyframes spin{
+from{transform:rotate(0deg)}
+to{transform:rotate(360deg)}
+}
+
+/* glitch */
+
+.glitch{
+animation:glitch 0.5s;
+}
+
+@keyframes glitch{
+0%{transform:translate(0)}
+20%{transform:translate(-5px,3px)}
+40%{transform:translate(5px,-3px)}
+60%{transform:translate(-3px,3px)}
+80%{transform:translate(3px,-3px)}
+100%{transform:translate(0)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="zaun"></div>
+<div class="piltover"></div>
+
+<img class="gear" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+
+<img class="jinx" src="https://c.tenor.com/jb14Mqgp9jkAAAAd/tenor.gif">
+
+<img class="ekko" src="https://c.tenor.com/wZ38fxcRj5gAAAAC/tenor.gif">
+
+<div class="container">
+
+<h1>Achilles & Gracinda</h1>
+
+<div class="text" id="text">
+
+Às vezes parece que estamos em lados diferentes do mundo...  
+como Piltover e Zaun.
+
+Mas mesmo quando o tempo quebra,  
+mesmo quando tudo parece distante...
+
+eu ainda voltaria.
+
+Sempre.
+
+</div>
+
+<button onclick="next()">Continuar</button>
+
+<button onclick="rewind()">⏪ Rewind</button>
+
+<button onclick="startMusic()">🎵 Tocar música</button>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="rewindSound">
+<source src="rewind.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let messages = [
+
+"Você é o meu caos favorito.",
+
+"Mesmo quando brigamos… eu ainda escolheria você.",
+
+"Ekko voltou no tempo inúmeras vezes… e eu faria o mesmo por nós.",
+
+"Mesmo quando tudo parece quebrado… ainda existe futuro.",
+
+"Porque no final… você ainda é a minha melhor inimiga."
+
+]
+
+let index = 0
+
+function next(){
+
+index++
+
+if(index >= messages.length) index = messages.length-1
+
+document.getElementById("text").innerText = messages[index]
+
+}
+
+function rewind(){
+
+document.getElementById("rewindSound").play()
+
+document.body.classList.add("glitch")
+
+setTimeout(()=>{
+document.body.classList.remove("glitch")
+},500)
+
+index--
+
+if(index < 0) index = 0
+
+document.getElementById("text").innerText = messages[index]
+
+}
+
+function startMusic(){
+document.getElementById("music").play()
+}
+
+</script>
+
+</body>
+</html>

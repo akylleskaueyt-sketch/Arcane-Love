@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,7 +17,7 @@ color:white;
 overflow:hidden;
 }
 
-/* fundos */
+/* FUNDO */
 
 .zaun{
 position:fixed;
@@ -24,7 +25,7 @@ left:0;
 top:0;
 width:50%;
 height:100%;
-background:url("https://media.tenor.com/9Sprv48rbTwAAAAd/arcane-zaun.gif");
+background:url("https://media.tenor.com/9Sprv48rbTwAAAAd/zaun-arcane.gif");
 background-size:cover;
 opacity:0.35;
 }
@@ -35,12 +36,12 @@ right:0;
 top:0;
 width:50%;
 height:100%;
-background:url("https://64.media.tumblr.com/fe81b5bc9703e974317a1d4fb29622cc/903e4a39edea2ad8-1d/s540x810/01d32821e54edf94324ecbfe8499b267ce97c187.gifv");
+background:url("https://media.tenor.com/jKk4o9S7Q8kAAAAd/piltover-arcane.gif");
 background-size:cover;
 opacity:0.35;
 }
 
-/* interface */
+/* CONTAINER */
 
 .container{
 position:relative;
@@ -59,17 +60,19 @@ color:#6df6ff;
 font-size:40px;
 }
 
+/* TEXTO */
+
 .text{
 max-width:600px;
 font-size:19px;
-line-height:1.7;
+line-height:1.6;
 margin:20px;
-transition:0.4s;
 }
 
-/* botões */
+/* BOTÕES */
 
 button{
+
 background:#111827;
 border:2px solid #6df6ff;
 color:#6df6ff;
@@ -78,130 +81,62 @@ margin:8px;
 font-size:16px;
 cursor:pointer;
 transition:0.3s;
+
 }
 
 button:hover{
+
 background:#6df6ff;
 color:#000;
+
 }
 
-/* gifs */
+/* GIFS */
 
 .jinx{
+
 position:fixed;
-right:20px;
+right:40px;
 bottom:20px;
 width:220px;
+
 }
 
 .ekko{
+
 position:fixed;
-left:20px;
+left:40px;
 bottom:20px;
 width:220px;
+
 }
 
-/* glitch */
+/* GLITCH */
 
 .glitch{
+
 animation:glitch 0.4s;
+
 }
 
 @keyframes glitch{
+
 0%{transform:translate(0)}
-20%{transform:translate(-5px,3px)}
-40%{transform:translate(5px,-3px)}
-60%{transform:translate(-3px,3px)}
-80%{transform:translate(3px,-3px)}
+25%{transform:translate(-6px,3px)}
+50%{transform:translate(6px,-3px)}
+75%{transform:translate(-3px,4px)}
 100%{transform:translate(0)}
+
 }
 
-/* mensagem secreta */
-
-.secret{
-position:fixed;
-top:15%;
-left:50%;
-transform:translateX(-50%);
-color:#ff4df0;
-font-size:20px;
-opacity:0;
-transition:0.6s;
-}
-
-.showSecret{
-opacity:1;
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="zaun"></div>
-<div class="piltover"></div>
-
-<img class="jinx" src="jinx.gif">
-<img class="ekko" src="ekko.gif">
-
-<div class="secret" id="secret">
-⚠ timeline corrompida...  
-mesmo em todas elas...  
-eu escolheria você.
-</div>
-
-<div class="container">
-
-<h1>Achilles & Gracinda</h1>
-
-<div class="text" id="text">
-
-Às vezes parece que estamos em lados diferentes do mundo...  
-como Piltover e Zaun.
-
-Mas mesmo quando o tempo quebra...  
-eu ainda voltaria.
-
-Sempre.
-
-</div>
-
-<div>
-
-<button onclick="next()">Continuar</button>
-
-<button onclick="rewind()">⏪ Rewind</button>
-
-<button onclick="startMusic()">🎵 Nossa música</button>
-
-<button onclick="getJinxed()">💣 Get Jinxed</button>
-
-<button onclick="ekkoTalk()">🕒 Fala do Ekko</button>
-
-</div>
-
-</div>
-
-<audio id="music" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="rewindSound">
-<source src="rewind.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="jinxSong">
-<source src="getjinxed.mp3" type="audio/mpeg">
-</audio>
-
-/* pixação ekko */
+/* PIXAÇÃO EKKO */
 
 .ekkoGraffiti{
 
 position:fixed;
 top:50%;
 left:50%;
-transform:translate(-50%,-50%) rotate(-5deg);
+transform:translate(-50%,-50%) rotate(-6deg);
 
 font-size:48px;
 font-weight:bold;
@@ -219,23 +154,76 @@ z-index:999;
 
 transition:0.4s;
 
-font-family:Impact, Arial Black, sans-serif;
+font-family:Impact, Arial Black;
 
 }
 
 .showGraffiti{
 
 opacity:1;
-animation:glitch 0.5s infinite;
+animation:glitch 0.4s infinite;
 
 }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="zaun"></div>
+<div class="piltover"></div>
+
+<img class="jinx" src="https://media.tenor.com/jb14Mqgp9jkAAAAd/jinx-laugh.gif">
+<img class="ekko" src="https://media.tenor.com/wZ38fxcRj5gAAAAC/ekko.gif">
+
+<div class="container">
+
+<h1>Achilles & Gracinda</h1>
+
+<div class="text" id="text">
+
+Às vezes parece que estamos em lados diferentes do mundo...
+como Piltover e Zaun.
+
+Mas mesmo quando o tempo quebra...
+
+eu ainda voltaria.
+
+Sempre.
+
+</div>
+
+<button onclick="next()">Continuar</button>
+
+<button onclick="rewind()">⏪ Rewind</button>
+
+<button onclick="startMusic()">🎵 Ma Meilleure Ennemie</button>
+
+<button onclick="jinxMusic()">💣 Get Jinxed</button>
+
+<button onclick="ekkoTalk()">🕒 Fala do Ekko</button>
+
+</div>
 
 <div class="ekkoGraffiti" id="ekkoGraffiti">
 
 "Mesmo se o tempo quebrar mil vezes...
-algumas pessoas sempre valem a pena."
+algumas pessoas ainda valem a pena."
 
 </div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="rewindSound">
+<source src="rewind.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="jinxSong">
+<source src="getjinxed.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
@@ -243,27 +231,29 @@ let messages = [
 
 "Você é o meu caos favorito.",
 
-"Ekko voltaria no tempo mil vezes… só pra salvar quem ama.",
+"Mesmo quando brigamos... eu ainda escolheria você.",
 
-"Em outra linha do tempo… você ainda seria a Powder.",
+"Ekko passou anos tentando consertar o tempo.",
 
-"A Powder que ria com ele… antes de tudo quebrar.",
+"Mas antes disso... existia apenas Ekko e Powder.",
 
-"Mas mesmo nesse universo… eu ainda escolho você.",
+"Duas crianças em Zaun tentando sobreviver.",
 
-"Mesmo quando brigamos… ainda somos nós dois contra o mundo.",
+"Eu gosto de pensar que em algum universo...",
 
-"Ekko aprendeu que algumas coisas não podem ser consertadas…",
+"Ekko nunca precisou voltar no tempo.",
 
-"...mas algumas ainda valem a pena tentar.",
+"E Powder nunca virou Jinx.",
 
-"Se eu tivesse o relógio dele…",
+"Eles só cresceram juntos.",
 
-"...eu voltaria para todos os momentos bons com você.",
+"Talvez seja assim em outro mundo.",
 
-"Porque no final de todas as timelines…",
+"Mas nesse mundo... eu ainda escolheria você.",
 
-"você ainda é a minha pessoa favorita."
+"Mesmo quando parece que estamos quebrados.",
+
+"Porque algumas pessoas sempre valem a pena."
 
 ]
 
@@ -271,36 +261,23 @@ let index = 0
 
 function next(){
 
-document.body.classList.add("glitch")
-
-setTimeout(()=>{
-
-document.body.classList.remove("glitch")
-
 index++
 
-if(index >= messages.length){
-
-index = messages.length-1
-
-}
+if(index >= messages.length) index = messages.length-1
 
 document.getElementById("text").innerText = messages[index]
 
-checkSecret()
+if(Math.random() < 0.2){
 
-},200)
+glitchMessage()
+
+}
 
 }
 
 function rewind(){
 
-let music = document.getElementById("music")
-
-let rewind = document.getElementById("rewindSound")
-
-rewind.currentTime = 0
-rewind.play()
+document.getElementById("rewindSound").play()
 
 document.body.classList.add("glitch")
 
@@ -312,33 +289,29 @@ index = 0
 
 document.getElementById("text").innerText = messages[0]
 
+let music = document.getElementById("music")
+
 music.currentTime = 0
+
 music.play()
 
-},800)
+},600)
 
 }
 
 function startMusic(){
 
-document.getElementById("music").play()
+let m = document.getElementById("music")
+m.currentTime = 0
+m.play()
 
 }
 
-function getJinxed(){
+function jinxMusic(){
 
-let jinxSong = document.getElementById("jinxSong")
-
-jinxSong.currentTime = 0
-jinxSong.play()
-
-document.body.classList.add("glitch")
-
-setTimeout(()=>{
-
-document.body.classList.remove("glitch")
-
-},500)
+let j = document.getElementById("jinxSong")
+j.currentTime = 0
+j.play()
 
 }
 
@@ -358,21 +331,30 @@ document.body.classList.remove("glitch")
 },4000)
 
 }
-}
 
-function checkSecret(){
+function glitchMessage(){
 
-if(index == 4 || index == 8){
+let hidden = [
 
-let secret = document.getElementById("secret")
+"glitch: você ainda é a minha pessoa favorita",
 
-secret.classList.add("showSecret")
+"glitch: eu escolheria você em qualquer timeline",
+
+"glitch: mesmo se o tempo quebrar",
+
+"glitch: você ainda é meu lar"
+
+]
+
+let msg = hidden[Math.floor(Math.random()*hidden.length)]
+
+document.getElementById("text").innerText = msg
 
 setTimeout(()=>{
-secret.classList.remove("showSecret")
-},4000)
 
-}
+document.getElementById("text").innerText = messages[index]
+
+},2000)
 
 }
 
